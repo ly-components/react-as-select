@@ -59,7 +59,7 @@ describe('test', function() {
     $(document.body).trigger('click');
     $(ReactDOM.findDOMNode(cp)).find('.select-list').length.should.eql(0);
   });
-  it('should change value when click on an available option', function() {
+  it('should change value and label when click on an available option', function() {
     let cp = ReactDOM.render(
       <Select value="css">
         <Option value="html">HTML</Option>
@@ -67,11 +67,14 @@ describe('test', function() {
       </Select>
       , container);
     let select = TestUtils.findRenderedComponentWithType(cp, Select);
+    let $dom = $(ReactDOM.findDOMNode(select));
     TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(select, 'select-body'));
     let options = TestUtils.scryRenderedDOMComponentsWithClass(select, 'select-option');
     select.state.value.should.be.eql('css');
+    $dom.find('.select-body').text().should.be.eql('CSS');
     TestUtils.Simulate.click(options[0]);
     select.state.value.should.be.eql('html');
+    $dom.find('.select-body').text().should.be.eql('HTML');
   });
   it('should not change value when click on a disabled option', function() {
     let cp = ReactDOM.render(
@@ -81,10 +84,26 @@ describe('test', function() {
       </Select>
       , container);
     let select = TestUtils.findRenderedComponentWithType(cp, Select);
+    let $dom = $(ReactDOM.findDOMNode(select));
     TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(select, 'select-body'));
     let options = TestUtils.scryRenderedDOMComponentsWithClass(select, 'select-option');
     select.state.value.should.be.eql('css');
+    $dom.find('.select-body').text().should.be.eql('CSS');
     TestUtils.Simulate.click(options[0]);
     select.state.value.should.be.eql('css');
+    $dom.find('.select-body').text().should.be.eql('CSS');
+  });
+  it('should hide options when click on a available option', function() {
+    let cp = ReactDOM.render(
+      <Select value="css">
+        <Option value="html">HTML</Option>
+        <Option value="css">CSS</Option>
+      </Select>
+      , container);
+    let select = TestUtils.findRenderedComponentWithType(cp, Select);
+    TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(select, 'select-body'));
+    let options = TestUtils.scryRenderedDOMComponentsWithClass(select, 'select-option');
+    TestUtils.Simulate.click(options[0]);
+    $(ReactDOM.findDOMNode(select)).find('.select-list').length.should.eql(0);
   });
 });
