@@ -108,7 +108,7 @@ Select.defaultProps = {
   maxHeight: 200,
   children: null,
   disabled: false,
-  placeholder: '请选择',
+  placeholder: '',
   className: 'react-as-select',
   onChange: () => {}
 };
