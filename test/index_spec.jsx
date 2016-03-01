@@ -42,8 +42,6 @@ describe('test', function() {
     let cp = ReactDOM.render(
       <Select>
         <Option value="html">HTML</Option>
-        <Option disabled value="javascript">JavaScript</Option>
-        <Option value="css">CSS</Option>
       </Select>, container);
     cp = TestUtils.findRenderedComponentWithType(cp, Select);
     TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(cp, 'select-body'));
@@ -53,8 +51,6 @@ describe('test', function() {
     let cp = ReactDOM.render(
       <Select>
         <Option value="html">HTML</Option>
-        <Option disabled value="javascript">JavaScript</Option>
-        <Option value="css">CSS</Option>
       </Select>
       , container);
     cp = TestUtils.findRenderedComponentWithType(cp, Select);
