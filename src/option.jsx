@@ -2,7 +2,7 @@ import React from 'react';
 import ClassNames from 'classnames';
 
 class Option extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
     this._handleMouseEnter = this._handleMouseEnter.bind(this);
     this._handleClick = this._handleClick.bind(this);

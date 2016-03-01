@@ -65,7 +65,7 @@ class Select extends React.Component {
   }
   _handleClick() {
     const props = this.props;
-    if (!props.disabled) {
+    if (!props.disabled && !props.readOnly) {
       if (this.state.open) {
         this.setState({open: false});
       } else {
@@ -102,12 +102,14 @@ Select.propTypes = {
   name: React.PropTypes.string,
   onChange: React.PropTypes.func,
   placeholder: React.PropTypes.any,
+  readOnly: React.PropTypes.bool,
   value: React.PropTypes.string
 };
 Select.defaultProps = {
   maxHeight: 200,
   children: null,
   disabled: false,
+  readOnly: false,
   placeholder: '',
   className: 'react-as-select',
   onChange: () => {}

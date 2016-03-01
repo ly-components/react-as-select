@@ -53,6 +53,22 @@ class Demo extends React.Component {
           </Select>
           <span className="result">{this.state.select3}</span>
         </div>
+        <div className="field">
+          <Select onChange={this._handleChange('select4')} placeholder="Read only" readOnly value={this.state.select4} >
+            <Option value="html">HTML</Option>
+            <Option value="javascript">JavaScript</Option>
+            <Option value="css">CSS</Option>
+          </Select>
+          <span className="result">{this.state.select4}</span>
+        </div>
+        <div className="field">
+          <Select disabled onChange={this._handleChange('select5')} placeholder="Disabled" value={this.state.select5} >
+            <Option value="html">HTML</Option>
+            <Option value="javascript">JavaScript</Option>
+            <Option value="css">CSS</Option>
+          </Select>
+          <span className="result">{this.state.select5}</span>
+        </div>
       </div>
     );
   }

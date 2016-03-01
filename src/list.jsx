@@ -14,7 +14,7 @@ class List extends React.Component {
   }
   _handleOptionActive(option) {
     this.setState({
-      active: option.value
+      active: option.props.value
     });
   }
   _handleOptionSelect(option) {
@@ -31,12 +31,12 @@ class List extends React.Component {
         const value = child.props.value;
         options.push(
           <Option {...child.props}
-            active={this.props.value === this.state.active}
+            active={child.props.value === this.state.active}
             key={value}
             onActive={this._handleOptionActive}
             onSelect={this._handleOptionSelect}
             ref={`option-${value}`}
-            selected={this.props.value === child.props.value} />
+            selected={child.props.value === this.props.value} />
         );
       }
     });
