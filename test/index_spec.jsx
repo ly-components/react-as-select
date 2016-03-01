@@ -106,4 +106,23 @@ describe('test', function() {
     TestUtils.Simulate.click(options[0]);
     $(ReactDOM.findDOMNode(select)).find('.select-list').length.should.eql(0);
   });
+  it('should render group', function() {
+    let cp = ReactDOM.render(
+      <Select>
+        <Group title="Language">
+          <Option value="english">English</Option>
+          <Option value="france">France</Option>
+          <Option value="chinese">Chinese</Option>
+        </Group>
+        <Group title="Country">
+          <Option value="china">China</Option>
+          <Option value="usa">USA</Option>
+          <Option value="us">US</Option>
+        </Group>
+      </Select>
+      , container);
+    let select = TestUtils.findRenderedComponentWithType(cp, Select);
+    TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(select, 'select-body'));
+    $(ReactDOM.findDOMNode(select)).find('.select-group').length.should.eql(2);
+  });
 });
