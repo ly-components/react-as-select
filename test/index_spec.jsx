@@ -59,4 +59,32 @@ describe('test', function() {
     $(document.body).trigger('click');
     $(ReactDOM.findDOMNode(cp)).find('.select-list').length.should.eql(0);
   });
+  it('should change value when click on an available option', function() {
+    let cp = ReactDOM.render(
+      <Select value="css">
+        <Option value="html">HTML</Option>
+        <Option value="css">CSS</Option>
+      </Select>
+      , container);
+    let select = TestUtils.findRenderedComponentWithType(cp, Select);
+    TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(select, 'select-body'));
+    let options = TestUtils.scryRenderedDOMComponentsWithClass(select, 'select-option');
+    select.state.value.should.be.eql('css');
+    TestUtils.Simulate.click(options[0]);
+    select.state.value.should.be.eql('html');
+  });
+  it('should not change value when click on a disabled option', function() {
+    let cp = ReactDOM.render(
+      <Select value="css">
+        <Option disabled value="html">HTML</Option>
+        <Option value="css">CSS</Option>
+      </Select>
+      , container);
+    let select = TestUtils.findRenderedComponentWithType(cp, Select);
+    TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(select, 'select-body'));
+    let options = TestUtils.scryRenderedDOMComponentsWithClass(select, 'select-option');
+    select.state.value.should.be.eql('css');
+    TestUtils.Simulate.click(options[0]);
+    select.state.value.should.be.eql('css');
+  });
 });
