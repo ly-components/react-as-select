@@ -125,4 +125,29 @@ describe('test', function() {
     TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(select, 'select-body'));
     $(ReactDOM.findDOMNode(select)).find('.select-group').length.should.eql(2);
   });
+  it('should change value when click on an option in group', function() {
+    let cp = ReactDOM.render(
+      <Select value="france">
+        <Group title="Language">
+          <Option value="english">English</Option>
+          <Option value="france">France</Option>
+          <Option value="chinese">Chinese</Option>
+        </Group>
+        <Group title="Country">
+          <Option value="china">China</Option>
+          <Option value="usa">USA</Option>
+          <Option value="us">US</Option>
+        </Group>
+      </Select>
+      , container);
+      let select = TestUtils.findRenderedComponentWithType(cp, Select);
+      let $dom = $(ReactDOM.findDOMNode(select));
+      TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(select, 'select-body'));
+      let options = TestUtils.scryRenderedDOMComponentsWithClass(select, 'select-option');
+      select.state.value.should.be.eql('france');
+      $dom.find('.select-body').text().should.be.eql('France');
+      TestUtils.Simulate.click(options[3]);
+      select.state.value.should.be.eql('china');
+      $dom.find('.select-body').text().should.be.eql('China');
+  });
 });
