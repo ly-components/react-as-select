@@ -86,25 +86,15 @@ const {
 
 ### Option
 
-[insert]: # (start:src/option.jsx|doc)
 | Name | Description | Type | Required | Default Value |
 | :--- | :----- | :--- | :---: | :---: |
-| active |  | Boolean |  | `false` |
 | children |  | String | √ |  |
-| disabled |  | Boolean |  | `false` |
-| onActive |  | Function |  | `() => {}` |
-| onSelect |  | Function |  | `() => {}` |
-| selected |  | Boolean |  | `false` |
 | value |  | String | √ |  |
-[insert]: # (end:src/option.jsx)
-
 ### Group
 
-[insert]: # (start:src/group.jsx|doc)
 | Name | Description | Type | Required | Default Value |
 | :--- | :----- | :--- | :---: | :---: |
 | title |  | String | √ | `''` |
-[insert]: # (end:src/group.jsx)
 
 ## Development
 
@@ -116,7 +106,6 @@ $ npm run build # build
 $ npm run test # run tests
 $ npm run cov # run coverage
 $ npm run build-demo # build demo, auto run in 'npm run build'
-$ npm run build-test # build test, auto run in 'npm run build'
 ```
 
 ## License
