@@ -16,6 +16,7 @@ class Option extends React.Component {
     this.props.onSelect(this);
   }
   render() {
+    React.Children.toArray(this.props.children);
     const props = this.props;
     const className = ClassNames({selected: props.selected, active: props.active, disabled: props.disabled, 'select-option': 1});
     return (

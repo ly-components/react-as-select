@@ -23,18 +23,88 @@ $ npm install --save react-as-select
 
 ## Usage
 
-```javascript
+### Easy select
+
+```js
 import Select from 'react-as-select';
-<Select />;
+const {
+  Option,
+  Group
+} = Select;
+
+<Select onChange={this._handleChange('select1')} placeholder="Please select" value={this.state.select1} >
+  <Option value="html">HTML</Option>
+  <Option disabled value="javascript">JavaScript</Option>
+  <Option value="css">CSS</Option>
+</Select>
+```
+
+### Group Select
+
+```js
+import Select from 'react-as-select';
+const {
+  Option,
+  Group
+} = Select;
+
+<Select onChange={this._handleChange('select2')} placeholder="Please select" value={this.state.select2} >
+  <Option value="html">HTML</Option>
+  <Option disabled value="javascript">JavaScript</Option>
+  <Option value="css">CSS</Option>
+  <Group title="Language">
+    <Option value="english">English</Option>
+    <Option disabled value="france">France</Option>
+    <Option value="chinese">Chinese</Option>
+  </Group>
+  <Group title="Country">
+    <Option disabled value="china">China</Option>
+    <Option disabled value="usa">USA</Option>
+    <Option value="us">US</Option>
+  </Group>
+</Select>
 ```
 
 ## Properties
 
+### Select
+
 [insert]: # (start:src/index.jsx|doc)
 | Name | Description | Type | Required | Default Value |
 | :--- | :----- | :--- | :---: | :---: |
-| content | content of element | String |  | `'Hello world'` |
+| children |  | Node |  | `null` |
+| className |  | String |  | `'react-as-select'` |
+| defaultValue |  | String |  |  |
+| disabled |  | Boolean |  | `false` |
+| maxHeight |  | Number |  | `200` |
+| name |  | String |  |  |
+| onChange |  | Function |  | `() => {}` |
+| placeholder |  | Any |  | `''` |
+| readOnly |  | Boolean |  | `false` |
+| value |  | String |  |  |
 [insert]: # (end:src/index.jsx)
+
+### Option
+
+[insert]: # (start:src/option.jsx|doc)
+| Name | Description | Type | Required | Default Value |
+| :--- | :----- | :--- | :---: | :---: |
+| active |  | Boolean |  | `false` |
+| children |  | String | √ |  |
+| disabled |  | Boolean |  | `false` |
+| onActive |  | Function |  | `() => {}` |
+| onSelect |  | Function |  | `() => {}` |
+| selected |  | Boolean |  | `false` |
+| value |  | String | √ |  |
+[insert]: # (end:src/option.jsx)
+
+### Group
+
+[insert]: # (start:src/group.jsx|doc)
+| Name | Description | Type | Required | Default Value |
+| :--- | :----- | :--- | :---: | :---: |
+| title |  | String | √ | `''` |
+[insert]: # (end:src/group.jsx)
 
 ## Development
 
