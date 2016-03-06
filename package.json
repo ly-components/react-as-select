@@ -58,15 +58,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LingyuCoder/react-as-select.git"
+    "url": "git+https://github.com/ly-components/react-as-select.git"
   },
   "keywords": [
     "react"
   ],
   "bugs": {
-    "url": "https://github.com/LingyuCoder/react-as-select/issues"
+    "url": "https://github.com/ly-components/react-as-select/issues"
   },
-  "homepage": "https://github.com/LingyuCoder/react-as-select#readme",
+  "homepage": "https://github.com/ly-components/react-as-select#readme",
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
